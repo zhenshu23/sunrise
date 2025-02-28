@@ -1,1 +1,101 @@
-fine
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宠物乐园</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+
+    #header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    #main-content {
+      padding: 20px;
+      position: relative;
+    }
+
+   .pet {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-size: cover;
+    }
+
+   .butterfly {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-size: cover;
+    }
+
+    #footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header">
+    <h1>欢迎来到宠物乐园</h1>
+  </div>
+  <div id="main-content">
+    <!-- 初始绘制一些宠物元素示例 -->
+    <div class="pet" style="left: 50px; top: 100px; background-image: url('yellow-dog.png');"></div>
+    <div class="pet" style="left: 200px; top: 150px; background-image: url('orange-cat.png');"></div>
+  </div>
+  <div id="footer">
+    &copy; 2025 宠物乐园版权所有
+  </div>
+  <script>
+    const petImages = ['yellow-dog.png', 'white-dog.png', 'gray-cat.png', 'orange-cat.png'];
+    const butterflyImages = ['butterfly1.png', 'butterfly2.png', 'butterfly3.png'];
+
+    document.addEventListener('click', function (event) {
+      const randomNum = Math.random();
+      if (randomNum < 0.33) {
+        // 33% 概率出现小狗
+        const randomPetIndex = Math.floor(Math.random() * petImages.length);
+        const pet = document.createElement('div');
+        pet.classList.add('pet');
+        pet.style.left = event.pageX + 'px';
+        pet.style.top = event.pageY + 'px';
+        pet.style.backgroundImage = `url('${petImages[randomPetIndex]}')`;
+        document.getElementById('main-content').appendChild(pet);
+      } else if (randomNum < 0.66) {
+        // 33% 概率出现小猫
+        const randomPetIndex = Math.floor(Math.random() * petImages.length);
+        const pet = document.createElement('div');
+        pet.classList.add('pet');
+        pet.style.left = event.pageX + 'px';
+        pet.style.top = event.pageY + 'px';
+        pet.style.backgroundImage = `url('${petImages[randomPetIndex]}')`;
+        document.getElementById('main-content').appendChild(pet);
+      } else {
+        // 33% 概率出现蝴蝶
+        const randomButterflyIndex = Math.floor(Math.random() * butterflyImages.length);
+        const butterfly = document.createElement('div');
+        butterfly.classList.add('butterfly');
+        butterfly.style.left = event.pageX + 'px';
+        butterfly.style.top = event.pageY + 'px';
+        butterfly.style.backgroundImage = `url('${butterflyImages[randomButterflyIndex]}')`;
+        document.getElementById('main-content').appendChild(butterfly);
+      }
+    });
+  </script>
+</body>
+
+</html>
