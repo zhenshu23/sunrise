@@ -2,67 +2,84 @@
 <html lang="zh-CN">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>宠物乐园</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fafafa;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击生成小猫小狗小蝴蝶</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
 
-    #header {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
+        #header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
 
-    #main-content {
-      padding: 20px;
-      position: relative;
-    }
+        #main-content {
+            padding: 20px;
+            position: relative;
+        }
 
-  .pet-text {
-      position: absolute;
-      font-size: 20px;
-      color: #333;
-    }
-
-    #footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-  </style>
+      .pet-text {
+            position: absolute;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
-  <div id="header">
-    <h1>欢迎来到宠物乐园</h1>
-  </div>
-  <div id="main-content">
+    <div id="header">
+        <h1>点击生成小猫小狗小蝴蝶</h1>
+    </div>
+    <div id="main-content">
 
-  </div>
-  <div id="footer">
-    &copy; 2025 宠物乐园版权所有
-  </div>
-  <script>
-    const petTexts = ['小猫', '小狗', '小蝴蝶'];
+    </div>
+    <div id="footer">
+        &copy; 2025 版权所有
+    </div>
+    <script>
+        const moodAdjectives = [
+            '开心的', '悲伤的', '兴奋的', '平静的', '好奇的', '慵懒的', '调皮的', '乖巧的', '紧张的',
+            '放松的', '得意的', '失落的', '温柔的', '暴躁的', '惊喜的', '沮丧的', '欢快的', '忧郁的',
+            '活泼的', '安静的', '焦虑的', '自信的', '害羞的', '勇敢的', '胆小的', '甜蜜的', '苦涩的',
+            '疲惫的', '精神的', '满足的', '渴望的', '迷茫的', '坚定的', '迷茫的', '无奈的', '期待的',
+            '失望的', '孤独的', '热闹的', '自在的', '拘束的', '陶醉的', '厌烦的', '欣慰的', '遗憾的',
+            '欢快的', '难过的', '生气的', '得意洋洋的', '垂头丧气的', '兴高采烈的', '闷闷不乐的',
+            '欢蹦乱跳的', '无精打采的', '悠然自得的', '心急如焚的', '忐忑不安的', '心花怒放的',
+            '愁眉苦脸的', '眉飞色舞的', '唉声叹气的', '喜笑颜开的', '泪流满面的', '笑逐颜开的',
+            '嚎啕大哭的', '和颜悦色的', '横眉竖眼的', '喜气洋洋的', '怒气冲冲的', '兴致勃勃的',
+            '灰心丧气的', '神采奕奕的', '没精打采的', '满面春风的', '愁眉不展的', '容光焕发的',
+            '黯然失色的', '跃跃欲试的', '畏畏缩缩的', '洋洋得意的', '耿耿于怀的', '乐此不疲的',
+            '不胜其烦的', '怡然自得的', '若有所思的', '恍然大悟的', '糊里糊涂的', '心平气和的',
+            '心烦意乱的', '泰然自若的', '惊慌失措的', '朝气蓬勃的', '暮气沉沉的'
+        ];
 
-    document.addEventListener('click', function (event) {
-      const randomPetIndex = Math.floor(Math.random() * petTexts.length);
-      const petText = document.createElement('div');
-      petText.classList.add('pet-text');
-      petText.style.left = event.pageX + 'px';
-      petText.style.top = event.pageY + 'px';
-      petText.textContent = petTexts[randomPetIndex];
-      document.getElementById('main-content').appendChild(petText);
-    });
-  </script>
+        const petTypes = ['小猫', '小狗', '小蝴蝶'];
+
+        document.addEventListener('click', function (event) {
+            const randomMoodIndex = Math.floor(Math.random() * moodAdjectives.length);
+            const randomPetIndex = Math.floor(Math.random() * petTypes.length);
+            const petText = document.createElement('div');
+            petText.classList.add('pet-text');
+            petText.style.left = event.pageX + 'px';
+            petText.style.top = event.pageY + 'px';
+            petText.textContent = moodAdjectives[randomMoodIndex] + petTypes[randomPetIndex];
+            document.getElementById('main-content').appendChild(petText);
+
+            setTimeout(() => {
+                petText.style.opacity = '0';
+                setTimeout(() => {
+                    petText.remove();
+                }, 2000);
+            }, 10000);
+        });
+    </script>
 
 </body>
 
